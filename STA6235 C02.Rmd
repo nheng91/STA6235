@@ -51,7 +51,7 @@ datatable(one)
 Let's explore our data. Let us first create histograms of the variables we are exploring.
 
 ```{r}
-ggplot(one, aes(x)) + 
+one %>% ggplot(aes(x)) + 
   geom_histogram() + 
   xlab("Lot Size") +
   ylab("Count") +
@@ -77,6 +77,8 @@ ggplot(one, aes(x=x, y=y)) +
 Next, we will examine summary statistics. 
 
 ```{r}
+# comment
+
 means <- summarize(one, mean_x = mean(x, na.rm=TRUE), sd_x = sd(x, na.rm=TRUE), mean_y = mean(y, na.rm=TRUE), sd_y = sd(y, na.rm=TRUE))
 ```
 
@@ -164,3 +166,15 @@ Let us now test if the correlation is significantly different from 0.
 
 ## Visualization of Regression Line
 
+```{r}
+one <- one %>% mutate(pred = predict(one_model))
+
+one %>% ggplot(aes(x = x, y = y)) +
+  geom_line(aes(y = pred), color = "black", size=1) +
+  geom_point() +
+  geom_text(aes(x = 125, y = 498, label = "regression line here"), color="black", show.legend = FALSE) +
+  scale_x_continuous(lim = c(20, 140), breaks = seq(min(20), max(140), by = 25), minor_breaks = seq(min(20), max(140), by = 12.5)) +
+  xlab("Number of Bids") +
+  ylab("Work Hours") +
+  theme_minimal()
+```
