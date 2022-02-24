@@ -1,0 +1,16 @@
+library(tidyverse)
+
+y <- c(46.4, 48.2, 46.5, 46.4, 48.6)
+x <- c(221, 221, 217, 216, 230)
+
+one <- tibble(x, y)
+
+m1 <- lm(y ~ x, data = one)
+
+summary(m1)
+
+# find MSE
+anova(m1)
+
+# find CI
+confint(m1)
