@@ -87,9 +87,7 @@ p <- ggplot(one, aes(sample = y)) +
 p
 
 # Breusch-Pagan test for homogeneity of variance
-one_bp <- bptest(one_model)
-# why is the test statistic different? (how is it being calculated?)
-# p-value lines up with what we found in class
+one_bp <- bptest(one_model, studentize = F)
 
 # lack of fit
 one_lack <- ols_pure_error_anova(one_model)
@@ -98,7 +96,7 @@ one_lack <- ols_pure_error_anova(one_model)
 # loess curve
 
 p <- ggplot(one, aes(x=x, y=y)) + 
-  geom_smooth() +
+  geom_point() +
   theme_minimal()
 
 p
