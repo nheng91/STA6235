@@ -1,0 +1,28 @@
+---
+title: "Quiz 9 (in class)"
+author: "Your Name Here"
+date: '2022-03-09'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(gsheet)
+
+data <- as_tibble(gsheet2tbl("https://docs.google.com/spreadsheets/d/1P5HkpCMmagYQUp0utPMPQBJi1i9nxYVNUyx0mgaHFzc/edit?usp=sharing"))
+
+Y <- data$Sell
+
+X1 <- data$Difficulty_num
+```
+
+## Create the design matrix
+
+## Find the estimates for $\beta_0$ and $\beta_1$
+
+## Determine if $X$ is a significant predictor of $Y$ (construct the test statistic using the matrix approach)
+
+
+
