@@ -1,28 +1,62 @@
 ---
 title: "Quiz 9 (in class)"
-author: "Your Name Here"
+author: "Nathan Heng"
 date: '2022-03-09'
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-
 library(tidyverse)
 library(gsheet)
-
 data <- as_tibble(gsheet2tbl("https://docs.google.com/spreadsheets/d/1P5HkpCMmagYQUp0utPMPQBJi1i9nxYVNUyx0mgaHFzc/edit?usp=sharing"))
-
 Y <- data$Sell
-
 X1 <- data$Difficulty_num
 ```
 
 ## Create the design matrix
 
+```{r}
+ones <- rep(1, nrow(data))
+X <- cbind(ones, X1)
+```
+
 ## Find the estimates for $\beta_0$ and $\beta_1$
+
+```{r}
+XtX <- t(X) %*% X
+XtY <- t(X) %*% Y
+beta <- solve(XtX)%*%XtY
+beta_0 <- beta[1]
+names(beta_0) <- "beta_0"
+beta_0
+beta_1 <- beta[2]
+names(beta_1) <- "beta_1"
+beta_1
+```
 
 ## Determine if $X$ is a significant predictor of $Y$ (construct the test statistic using the matrix approach)
 
+```{r}
+alpha = 0.05
+H = X%*%solve(XtX)%*%t(X)
+J <- matrix(1, nrow(X), nrow(X))
+I <- diag(nrow(X))
+SSR <- t(Y) %*% (H - (1/nrow(X)) * J) %*% Y
+SSE <- t(Y) %*% (I - H) %*% Y
+MSR <- SSR/(ncol(X)-1)
+MSE <- SSE*(1/(nrow(X)-(ncol(X)-1)-1))
+F_stat = (MSR / MSE)[1,1]
+p_value <- pf(F_stat, ncol(X)-1, nrow(X)-(ncol(X)-1)-1, lower.tail = FALSE)
+p_value
+```
 
+If the p-value is less than alpha = 0.05 we reject the null hypothesis that $X$ is not a significant predictor of $Y$.
 
+## Conclusion
+
+```{r}
+p_value < alpha
+```
+
+We reject the null hypothesis.  $X$ is a significant predictor of $Y$
