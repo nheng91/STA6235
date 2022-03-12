@@ -47,7 +47,9 @@ SSE <- t(Y) %*% (I - H) %*% Y
 MSR <- SSR/(ncol(X)-1)
 MSE <- SSE*(1/(nrow(X)-(ncol(X)-1)-1))
 F_stat = (MSR / MSE)[1,1]
+names(F_stat) <- "F Statistic"
 p_value <- pf(F_stat, ncol(X)-1, nrow(X)-(ncol(X)-1)-1, lower.tail = FALSE)
+names(p_value) <- "p-value"
 F_stat
 p_value
 ```

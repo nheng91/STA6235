@@ -205,7 +205,9 @@ MSR &lt;- SSR/(ncol(X)-1)
 MSE &lt;- SSE*(1/(nrow(X)-(ncol(X)-1)-1))
 F_stat = (MSR / MSE)[1,1]
 p_value &lt;- pf(F_stat, ncol(X)-1, nrow(X)-(ncol(X)-1)-1, lower.tail = FALSE)
-p_value</code></pre>
+F_stat</code></pre>
+<pre><code>## [1] 88.34984</code></pre>
+<pre class="r"><code>p_value</code></pre>
 <pre><code>## [1] 1.815747e-14</code></pre>
 <p>If the p-value is less than alpha = 0.05 we reject the null hypothesis that <span class="math inline">\(X\)</span> is not a significant predictor of <span class="math inline">\(Y\)</span>.</p>
 </div>
