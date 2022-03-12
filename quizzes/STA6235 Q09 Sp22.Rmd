@@ -59,7 +59,7 @@ If the p-value is less than alpha = 0.05 we reject the null hypothesis that $X$ 
 ## Conclusion
 
 ```{r}
-p_value < alpha
+unname(p_value) < alpha
 ```
 
 We reject the null hypothesis.  $X$ is a significant predictor of $Y$
