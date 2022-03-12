@@ -204,17 +204,22 @@ SSE &lt;- t(Y) %*% (I - H) %*% Y
 MSR &lt;- SSR/(ncol(X)-1)
 MSE &lt;- SSE*(1/(nrow(X)-(ncol(X)-1)-1))
 F_stat = (MSR / MSE)[1,1]
+names(F_stat) &lt;- &quot;F Statistic&quot;
 p_value &lt;- pf(F_stat, ncol(X)-1, nrow(X)-(ncol(X)-1)-1, lower.tail = FALSE)
+names(p_value) &lt;- &quot;p-value&quot;
 F_stat</code></pre>
-<pre><code>## [1] 88.34984</code></pre>
+<pre><code>## F Statistic 
+##    88.34984</code></pre>
 <pre class="r"><code>p_value</code></pre>
-<pre><code>## [1] 1.815747e-14</code></pre>
+<pre><code>##      p-value 
+## 1.815747e-14</code></pre>
 <p>If the p-value is less than alpha = 0.05 we reject the null hypothesis that <span class="math inline">\(X\)</span> is not a significant predictor of <span class="math inline">\(Y\)</span>.</p>
 </div>
 <div id="conclusion" class="section level2">
 <h2>Conclusion</h2>
 <pre class="r"><code>p_value &lt; alpha</code></pre>
-<pre><code>## [1] TRUE</code></pre>
+<pre><code>## p-value 
+##    TRUE</code></pre>
 <p>We reject the null hypothesis. <span class="math inline">\(X\)</span> is a significant predictor of <span class="math inline">\(Y\)</span></p>
 </div>
 
