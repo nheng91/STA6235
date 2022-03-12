@@ -48,6 +48,7 @@ MSR <- SSR/(ncol(X)-1)
 MSE <- SSE*(1/(nrow(X)-(ncol(X)-1)-1))
 F_stat = (MSR / MSE)[1,1]
 p_value <- pf(F_stat, ncol(X)-1, nrow(X)-(ncol(X)-1)-1, lower.tail = FALSE)
+F_stat
 p_value
 ```
 
