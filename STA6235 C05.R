@@ -30,6 +30,7 @@ XtY <- t(X) %*% Y
 
 # find b = inv(X'X) * X'Y
 b <- solve(t(X)%*%X) %*% t(X)%*%Y
+b_2 <- solve(XtX)%*%XtY
 
 # find y hat
 pred <- X%*%b
