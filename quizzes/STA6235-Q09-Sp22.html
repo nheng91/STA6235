@@ -217,9 +217,8 @@ F_stat</code></pre>
 </div>
 <div id="conclusion" class="section level2">
 <h2>Conclusion</h2>
-<pre class="r"><code>p_value &lt; alpha</code></pre>
-<pre><code>## p-value 
-##    TRUE</code></pre>
+<pre class="r"><code>unname(p_value) &lt; alpha</code></pre>
+<pre><code>## [1] TRUE</code></pre>
 <p>We reject the null hypothesis. <span class="math inline">\(X\)</span> is a significant predictor of <span class="math inline">\(Y\)</span></p>
 </div>
 
