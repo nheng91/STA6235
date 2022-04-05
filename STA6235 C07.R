@@ -23,7 +23,7 @@ one <- tibble(y, x1, x2, x3)
 pairs(one[,2:4], pch = 19)
 
 # this one suppresses the lower half of the matrix
-#pairs(one[,2:4], pch = 19, lower.panel = NULL)
+pairs(one[,2:4], pch = 19, lower.panel = NULL)
 
 # a second option for matrix of scatterplots
 # plot(one, pch=3, cex=1, col="#69b3a2")
