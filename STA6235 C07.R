@@ -1,4 +1,5 @@
 library(tidyverse)
+library(car)
 
 x1 <- c(19.5, 24.7, 30.7, 29.8, 19.1, 25.6, 31.4, 27.9,
         22.1, 25.5, 31.1, 30.4, 18.7, 19.7, 14.6, 29.5,
@@ -36,16 +37,16 @@ cor(one[,2:4])
 # goal: compare y ~ x1 + x2 + x3 to y ~ x1
 
 full <- lm(y ~ x1 + x2 + x3, data=one) # Full Model
-reduced <- lm(y ~ x1, data=one) # Reduced model
+reduced <- lm(y ~ x1 + x3, data=one) # Reduced model
 
 out <- anova(reduced, full)
 
 # check values
-# anova(full)
-# anova(reduced)
+anova(full)
+anova(reduced)
 
-
-
+vif(reduced)
+out
 
 
 
