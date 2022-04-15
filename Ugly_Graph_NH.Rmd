@@ -31,8 +31,8 @@ predictions$Ratings <- predict(m, newdata = predictions)
 ggplot(data, aes(x = Air, y = Ratings, fill = as.factor(MilkFat))) + 
   geom_point(shape = 21, size = 4, color = "black") + 
   geom_line(data = predictions, aes(x = Air, y = Ratings, color = as.factor(MilkFat)), size = 1.5) +
-  theme(axis.text.x = element_text(size = 20, color = "darkorange"), axis.title.x = element_text(size = 8, color = "purple"),axis.text.y = element_text(size = 8, color = "purple"),  axis.title.y = element_text(size = 20, color = "darkorange"), panel.background = element_rect(fill = "sienna4", color = "blue", size = 10), panel.grid.major = element_line(color = "red"), panel.grid.minor = element_line(color = "red"), legend.title = element_text(size = 8), 
-        legend.text = element_text(size = 20), legend.key = element_rect(color = "sienna4", fill = "sienna4"), legend.background = element_rect(fill = "red", colour = "aquamarine", size = 3)) +
+  theme(axis.text.x = element_text(size = 20, color = "darkorange"), axis.title.x = element_text(size = 8, color = "purple"),axis.text.y = element_text(size = 8, color = "purple"),  axis.title.y = element_text(size = 20, color = "darkorange"), panel.background = element_rect(fill = "sienna4", color = "blue", size = 10), panel.grid.major = element_line(color = "red"), panel.grid.minor = element_line(color = "red"), legend.title = element_text(size = 8, color = "white"), 
+        legend.text = element_text(size = 20, color = "white"), legend.key = element_rect(color = "sienna4", fill = "sienna4"), legend.background = element_rect(fill = "red", colour = "aquamarine", size = 3)) +
   scale_fill_manual("MilkFat", values = c("lawngreen", "hotpink", "cyan")) +
   scale_color_manual("MilkFat", values = c("lawngreen", "hotpink", "cyan"))  
   
