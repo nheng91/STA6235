@@ -58,7 +58,7 @@ gg_cooksd(m1) + theme_bw()
 
 # DFBETAS and DFFITS
 # (and Cook's distance and hat diagonal)
-m.inf <- influence.measures(m1)
+m.inf <- as_tibble(influence.measures(m1)[1])
 
 #VIF
 vif(m1)
@@ -86,8 +86,10 @@ one$i <- as.numeric(rownames(one))
 two <- filter(one, i != 1 & i !=3)
 
 # then recreate models using the new dataset
-
-
+m1 <- lm(y ~ x2 + x3, data=one)
+m2 <- lm(y ~ x2 + x3, data=two)
+summary(m1)
+summary(m2)
 
 
 
